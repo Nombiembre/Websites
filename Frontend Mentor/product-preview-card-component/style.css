@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');/* Box sizing rules */
+
+/*Custom Properties*/
+:root {
+  --bg: hsl(30, 38%, 92%);
+  --clr-primary-green: hsl(158, 36%, 37%);
+  --clr-dark-green: hsl(156, 42%, 18%);
+  
+  --clr-neutral-700: hsl(212, 21%, 14%);
+  --clr-neutral-400: hsl(228, 12%, 48%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  
+  --ff-body: 'Montserrat', sans-serif;
+  --ff-heading: 'Fraunces', serif;
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+
+  --fs-300: 12px;
+  --fs-400: 14px;
+  --fs-700: 30px;
+
+  --border-radius: 10px;
+  --padding: 1rem;
+
+  --border-image: 10px 0px 0px 10px;
+  --border-mobile: 10px 10px 0px 0px;
+  --shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*Utilities Classes*/
+.clr-primary-100 {color: var(--clr-primary-100);}
+.clr-black {  color: var(--clr-neutral-700);}
+.clr-green { color: var(--clr-primary-green);}
+
+.fs-heading {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-700);
+  font-family: var(--ff-heading);
+  line-height: 1.1em;
+}
+
+.fw-bold {font-weight: var(--fw-700);}
+.fs-prices {
+  font-size: var(--fs-700);
+  color: var(--clr-primary-green);
+  font-weight: var(--fw-700);
+  font-family: var(--ff-heading);
+}
+
+.discount {
+  text-decoration: line-through;
+}
+
+.uppercase {text-transform: uppercase;}
+.spacing {letter-spacing: 0.4em;}
+
+
+.font-body {
+  font-family: var(--ff-body);
+  color: var(--clr-neutral-400);
+  font-size: var(--fs-400);
+  line-height: 1.4rem;
+}
+
+.fs-tiny {font-size: var(--fs-300);}
+
+/*Reset https://piccalil.li/blog/a-modern-css-reset*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global */
+body {
+  font-family: var(--ff-body);
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  --max-width: 500px;
+  width: min(var(--max-width), (100% - var(--padding)));
+  margin-inline: auto;
+}
+
+.grid-two {
+  padding-inline: 30px;
+  padding-top: 30px;
+}
+
+.container {
+  background-color: var(--clr-neutral-100);
+  border-radius: var(--border-radius);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);;
+}
+
+.perfume-img {
+  border-radius: var(--border-image);
+}
+
+.perfume-img[data="mobile"] {
+  border-radius: var(--border-mobile);
+}
+
+@media (min-width: 40em) {
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+  }
+
+  .perfume-img[data="mobile"]{
+    display: none;
+  }
+
+  body {
+    transition: 0.7s;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.flex[data="boton"]{
+  justify-content: center;
+}
+
+.flow > * + * {
+  margin-top: 20px;
+  /* outline: 3px solid lime; */
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--clr-primary-green);
+  border: 0px;
+  color: var(--clr-neutral-100);
+  padding-block: 12px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--clr-dark-green);
+  transition: 0.3s;
+}
+
+@media (max-width: 40em) {
+  .perfume-img[data="desktop"]{
+    display: none;
+  }
+
+  .container {
+    --max-width: 375px;
+    width: min(var(--max-width), (100% - var(--padding)*2));
+    margin-inline: auto;
+  }
+
+  .grid-two {
+    padding-bottom: 26px;
+    padding-top: 16px;
+  }
+  body {
+    align-items: start;
+    margin-top: 40px;
+    justify-content: center;
+    transition: 0.7s;
+    /* transition-duration: 0.3s; */
+  } 
+}

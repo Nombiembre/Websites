@@ -1,0 +1,195 @@
+/* reset */
+:root{
+	--clr-organe:  hsl(31, 77%, 52%);
+	--clr-cyan: hsl(184, 100%, 22%) ;
+	--clr-dark-cyan: hsl(179, 100%, 13%);
+
+	--clr-neutral-0: white;
+	--clr-neutral-100: hsla(0, 0%, 100%, 0.75);
+	--clr-neutral-170: hsla(0, 0%, 100%, 0.90);
+	--clr-neutral-400: hsl(0, 0%, 95%);
+
+	--fs-400: .938rem;
+	--fs-700: 2.5rem;
+
+	--fw-400: 400;
+	--fw-700: 700;
+
+	--ff-header: 'Big Shoulders Display', sans-serif;
+	--ff-body: 'Lexend Deca', sans-serif;
+}
+
+.primary-header{
+	font-family: var(--ff-header);
+	font-weight: var(--fw-700);
+	font-size: var(--fs-700);
+	text-transform: uppercase;
+	color: var(--clr-neutral-170);
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+	min-height: 100dvh;
+	min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global */
+
+body {
+	display: grid;
+	place-content: center;
+
+	background-color: var(--clr-neutral-400);
+	font-family: var(--ff-body);
+	color: var(--clr-neutral-100);
+	font-size: var(--fs-400);
+	font-weight: var(--fw-400);
+}
+
+.wrapper{
+	--max-width: 1440px;
+	--spacing: 3em;
+
+	
+	width: min(var(--max-width), calc(100% - var(--spacing)));
+	margin-inline: auto;
+}
+
+.cars{
+	border-radius: .5em;
+	display: grid;
+	overflow: hidden;
+	/* transition: all .2s; */
+}
+
+@media(max-width: 700px){
+	.cars{
+		margin-block: 5em;
+	}
+}
+
+.cards{
+	padding: 3em;
+	display: grid;
+	gap: 1.5em;
+}
+
+.cards img{
+	max-width: 30%;
+}
+
+.orange{
+	color: var(--clr-organe);
+}
+.cyan{
+	color: var(--clr-cyan);
+}
+.dark-cyan{
+	color: var(--clr-dark-cyan);
+}
+
+.bg-orange {
+	background-color: var(--clr-organe);
+}
+
+.bg-cyan {
+	background-color: var(--clr-cyan);
+}
+
+.bg-dark-cyan{
+	background-color: var(--clr-dark-cyan);
+}
+
+
+.button{
+	background-color: var(--clr-neutral-0);
+	border: 0;
+	border-radius: 1.5em;
+	padding: .8em 2em;
+	width: fit-content;
+	transition: all ease-in .2s;
+}
+
+@media (min-width: 700px){
+	.cars{
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.button{
+		margin-top: 4em;
+	}
+
+	p{
+		max-width: 15em;
+	}
+}
+
+.button:is(:hover, :focus){
+	cursor: pointer;
+	background-color: transparent;
+	color: var(--clr-neutral-0);
+	outline: 2px solid var(--clr-neutral-0);
+}

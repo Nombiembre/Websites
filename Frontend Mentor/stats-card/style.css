@@ -1,0 +1,246 @@
+
+/* Box sizing rules */
+:root {
+  --clr-primary-900:  hsl(233, 47%, 7%);
+  --clr-primary-700: hsl(244, 38%, 16%) ;
+  --clr-primary-400: hsl(277, 64%, 61%);
+
+  --clr-primary-neutral-100: hsl(0, 0%, 100%);
+  --clr-primary-neutral-200: hsla(0, 0%, 100%, 0.75);
+  --clr-primary-neutral-300: hsla(0, 0%, 100%, 0.6);
+
+  --fs-400: .938rem;
+  --fs-700: 1.7rem;
+
+  --ff-inter: 'Inter', sans-serif;
+  --ff-deca: 'Lexend Deca', sans-serif;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --debug: 2px solid lime;
+  --debug-100: 2px solid pink;
+
+  --border: .6em;
+  --gap: 2em;
+}
+
+
+.primary-header {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-bold);
+  color: var(--clr-primary-neutral-100);
+  line-height: 1.2;
+
+  span{
+    color: var(--clr-primary-400);
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100dvh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global */
+
+body {
+  background-color: var(--clr-primary-900);
+  font-size: var(--fs-400);
+  font-family: var(--ff-inter);
+  font-weight: var(--fw-regular);
+  color: var(--clr-primary-neutral-300);
+
+  display: grid;
+  place-content: center;
+}
+
+
+
+@media (max-width: 1044px) {
+
+  .wrapper{
+    --max-width: 375px;
+    --spacing: 2em;
+
+    width: min(var(--max-width), calc(100% - var(--spacing)*2));
+    margin-inline: auto;
+  }
+
+  .card__content div:first-child p{
+    font-family: var(--ff-deca);
+    max-width: 92%;
+    margin-inline: auto;
+    margin-top: 1em;
+  }
+
+  .card__img{
+    height: 300px;
+    background-image: url(images/image-header-mobile.jpg);
+    background-size: cover;
+    background-color: var(--clr-primary-400);
+    background-blend-mode: multiply;
+  }
+}
+
+/* Card */
+.card{
+  text-align: center;
+  background-color: var(--clr-primary-700);
+  border-radius: var(--border);
+  overflow: hidden;
+  transition: all ease-out .1s;
+}
+
+
+
+/* Second Half */
+
+.card__content{
+  --padding: 2em 1em;
+
+  display: grid;
+  padding: var(--padding);
+  gap: calc(var(--gap)*1.4);
+  line-height: 1.8;
+}
+
+
+.card__content__stats{
+  font-weight: var(--fw-bold);
+  display: grid;
+  gap: var(--gap);
+}
+
+.raw{
+  display: grid;
+  
+}
+
+.card__content__stats span{
+  font-weight: var(--fw-regular);
+  color: var(--clr-primary-neutral-300);
+  font-family: var(--ff-deca);
+  font-size: var(--fs-400);
+}
+
+/* Responsive */
+
+
+@media (min-width: 1044px){
+  
+  :root{
+    --fs-400: .938rem;
+    --fs-700: 2.3rem;
+  }
+
+  .card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+  }
+
+  .card__img{
+    background-image: url(images/image-header-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--clr-primary-400);
+    background-blend-mode: multiply;
+    grid-column: 2;
+  }
+
+  .wrapper{
+      --max-width: 1140px;
+      --spacing: 2em;
+  
+      width: min(var(--max-width), calc(100% - var(--spacing)*2));
+      margin-inline: auto;
+      
+    }
+  
+
+  .card__content{
+    text-align: left;
+    --padding: 5em;
+    padding: var(--padding) 5em;
+    grid-row: 1;
+  }
+
+
+.card__content__stats{
+  --fs-700: 1.7rem;
+  --fs-400: .8rem;
+
+  margin-top: 2em;
+  font-weight: var(--fw-bold);
+  display: flex;
+  gap: calc(var(--gap)*3);
+}
+
+
+.card__content div:first-child p{
+  font-family: var(--ff-deca);
+  max-width: 90%;
+  margin-top: 1em;
+}
+
+}

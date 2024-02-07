@@ -1,0 +1,224 @@
+
+/* custom properties */
+:root {
+  --clr-primary-100: hsl(225, 100%, 94%);
+  --clr-primary-400: hsl(245, 75%, 52%);
+  --clr-primary-400-trans: hsl(245, 75%, 52%, 0.6);
+
+  --clr-accent-100: hsl(225, 100%, 98%);
+  --clr-accent-400: hsl(224, 23%, 55%);
+  --clr-accent-700: hsl(223, 47%, 23%);
+
+  --fs-300: 0.9rem;
+  --fs-400: 1rem;
+  --fs-700: 1.25em;
+  --fs-900: 1.725rem;
+
+  --ff-primary: 'Red Hat Display', sans-serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --fw-extra-bold: 900;
+
+  --radius: .8em;
+
+  --shadow-color-400: 245deg 75% 52%;
+  --shadow-color-100: 225deg 34% 61%;
+  
+  --shadow-elevation-low:
+    0px 1px 1.5px hsl(var(--shadow-color) / 0),
+    0px 3.3px 4.9px hsl(var(--shadow-color) / 0.33);
+    --shadow-elevation-medium:
+    0px 1px 1.5px hsl(var(--shadow-color-400) / 0),
+    0px 19.2px 28.8px hsl(var(--shadow-color-400) / 0.3);
+    --shadow-elevation-high:
+    0.3px 1px 1.6px hsl(var(--shadow-color-100) / 0),
+    5.8px 16.9px 26.8px hsl(var(--shadow-color-100) / 0.2),
+    17.9px 52px 82.5px hsl(var(--shadow-color-100) / 0.3);
+}
+
+@media (min-width: 50em) {
+
+}
+
+/*Utilities classes*/
+.title-primary {
+  color: var(--clr-accent-700);
+  font-size: var(--fs-900);
+  font-weight: var(--fw-extra-bold);
+}
+
+.title-secondary {
+  color: var(--clr-accent-700);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-extra-bold);
+}
+
+
+/* Reset https://piccalil.li/blog/a-modern-css-reset*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100dvh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Global */
+body {
+  color: var(--clr-accent-400);
+  font-size: var(--fs-400);
+  font-family: var(--ff-primary);
+  background-image: url("images/pattern-background-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--clr-primary-100);
+
+  display: grid;
+  place-content: center;
+}
+
+@media (max-width: 40em){
+  body {
+    background-image: url("images/pattern-background-mobile.svg");
+  }
+}
+
+.summary-card {
+  --gap: 1em;
+  --padding: 2.75em;
+  --max-width: 450px;
+
+  background-color: white;
+  border-radius: calc(var(--radius)*1.4);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  box-shadow: var(--shadow-elevation-high);
+}
+
+.wrapper {
+  width: min(var(--max-width), calc(100% - var(--padding)));
+  margin-inline: auto;
+}
+
+.summary {
+  padding: var(--padding);
+  text-align: center;
+  display: grid;
+  gap: var(--gap);
+}
+
+.flexy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap);
+  flex-wrap: wrap;
+}
+
+.plans {
+  --padding: 2em 1.5em;
+
+  background-color: var(--clr-accent-100);
+  border-radius: var(--radius);
+  padding: var(--padding);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.button {
+  --padding: .9em;
+  background-color: var(--clr-primary-400);
+  color: white;
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--radius);
+  padding-block: var(--padding);
+  font-weight: var(--fw-extra-bold);
+  font-size: var(--fs-300);
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.button:hover,
+.button:focus{
+  background-color: var(--clr-primary-400-trans);
+  /* color: white; */
+}
+
+.link-basic {
+  color: var(--clr-primary-400);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-300);
+}
+
+.link-basic:hover,
+.link-basic:focus{
+  color: var(--clr-primary-400-trans);
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: var(--fw-extra-bold);
+  color: var(--clr-accent-400);
+  margin-top: var(--gap);
+  font-size: var(--fs-300);
+}
+
+.link:hover,
+.link:focus{
+  color: var(--clr-accent-700);  
+}
